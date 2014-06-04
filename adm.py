@@ -59,7 +59,7 @@ buf = ""
 if tp[0]:
     buf = "checked"
 
-ft = open('/var/www/cgi-bin/hello.html')
+ft = open('/var/www/cgi-bin/adm.html')
 str = ft.read()
 ft.close()
 
