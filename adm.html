@@ -1,0 +1,38 @@
+<html>
+<head><meta content="text/html; charset=UTF-8" />
+<title>Raspberry Pi Wipeon</title>
+<body>
+<form name ="settings" action="adm.py" method="GET">
+    <p>
+        <b>Settings:</b><br>
+        <a>Set barcode method:</a><br>
+        <input type="checkbox" name="Manual" %s>Manual<br>
+        <a>Line nimber:</a><br>
+        <input name="LineNumber" maxlength=2 value=%s><br>
+        <a>Barcode:</a><br>
+        <input name="BarCode" maxlength=12 value=%s><br>
+        <a>Egg color:</a><br>
+        <select name="Color">
+            <option %s value = "white">White</option>
+            <option %s value = "brown">Brown</option>
+        </select><br>
+        <a>Egg category:</a><br>
+        <select name="Category">
+            <option %s value = "C0">C0</option>
+            <option %s value = "C1">C1</option>
+            <option %s value = "C2">C2</option>
+            <option %s value = "CW">CW</option>
+            <option %s value = "CM">CM</option>
+         </select><br>
+     </p>
+    <p>
+        <b>Status:</b>
+        <a>%s</a>
+    </p>
+    <p>
+        <input type="submit" value="Save">
+        <input type="reset" value="Cancel">
+    </p>
+</form>
+</body>
+</html>
