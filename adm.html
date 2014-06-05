@@ -6,24 +6,26 @@
     <p>
         <b>Settings:</b><br>
         <a>Set barcode method:</a><br>
-        <input type="checkbox" name="Manual" %s>Manual<br>
-        <a>Line nimber:</a><br>
-        <input name="LineNumber" maxlength=2 value=%s><br>
+        <input type="checkbox" name="manual" %s>Manual<br>
+        <a>Line number:</a><br>
+        <input name="line" maxlength=3 value=%s><br>
         <a>Barcode:</a><br>
-        <input name="BarCode" maxlength=12 value=%s><br>
+        <input name="barcode" maxlength=12 value=%s><br>
         <a>Egg color:</a><br>
-        <select name="Color">
+        <select name="color">
             <option %s value = "white">White</option>
             <option %s value = "brown">Brown</option>
         </select><br>
         <a>Egg category:</a><br>
-        <select name="Category">
+        <select name="category">
             <option %s value = "C0">C0</option>
             <option %s value = "C1">C1</option>
             <option %s value = "C2">C2</option>
             <option %s value = "CW">CW</option>
             <option %s value = "CM">CM</option>
          </select><br>
+        <a>Enterprise name:</a><br>
+        <input name="enterprise" maxlength=3 value=%s>
      </p>
     <p>
         <b>Status:</b>
