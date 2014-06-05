@@ -12,23 +12,38 @@ ct_d = {"C0": ("selected", "", "", "", ""),
     "CW": ("", "", "", "selected", ""),
     "CM": ("", "", "", "", "selected")}
 
-def chck(frm, name):
-    res = ""
+def chck(frm, name, default = ""):
+    res = default
     if frm.has_key(name):
         res = frm.getvalue(name)
 
     return res
 
+def chckc(cnf, name, default = ""):
+    res = default
+    if cnf.has_option('main',name):
+        if name == "manual":
+            res = cnf.getboolean('main',name)
+        else:
+            res = cnf.get('main',name)
+
+    return res
+
 def fromfile():
+    fname = '/home/pi/printer.config';
+    tp_def = (False,"00","000000000000","white","C0","Editing...")
+    if not os.path.isfile(fname):
+        return tp_def
+
     fp = open('/home/pi/printer.config')
     config = ConfigParser.RawConfigParser()
     config.readfp(fp)
-    tp_res = (config.getboolean('main','manual'),
-        config.get('main','line'),
-        config.get('main','barcode'),
-        config.get('main','color'),
-        config.get('main','category'),
-        "Editing...")
+    tp_res = (chckc(config,'manual',tp_def[0]),
+        chckc(config,'line',    tp_def[1]),
+        chckc(config,'barcode', tp_def[2]),
+        chckc(config,'color',   tp_def[3]),
+        chckc(config,'category',tp_def[4]),
+        tp_def[5])
     fp.close()
     return tp_res
 
