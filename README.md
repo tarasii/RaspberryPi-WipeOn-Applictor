@@ -36,6 +36,7 @@ To setup web administration page you need to install lighttpd with pyton cgi mod
 Lighttpd config file changes:
     
    #mod_cgi and mod_rewrite shoud be on
+   
    server.modules = (
         "mod_access",
         "mod_alias",
