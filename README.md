@@ -9,6 +9,7 @@ Box gets to printer and label applis to it.
 Some label setting are on webinterface of Raspberry.
 
 file list:
+
     adm.html             - html template of admin page
     adm.py               - cgi python scrip of admin page
     lighttpd.conf        - example of lighttpd configuration file
@@ -19,14 +20,18 @@ file list:
     setbarcode.py        - script creates barcode.bas from barcode.template using printer.config
    
 directory structure:
-    /home/pi/barcode.bas
-    /home/pi/barcode.template.bas
-    /home/pi/printer.config
-    /home/pi/printonkeyborard.py
-    /home/pi/setbarcode.py
-    /var/www/cgi-bin/adm.html
-    /var/www/cgi-bin/adm.py
-    /etc/lighttpd/lighttpd.conf
+
+    /home/pi/
+        barcode.bas
+        barcode.template.bas
+        printer.config
+        printonkeyborard.py
+        setbarcode.py
+    /var/www/cgi-bin/
+        adm.html
+        adm.py
+    /etc/lighttpd/
+        lighttpd.conf
 
 
 To setup web administration page you need to install lighttpd with pyton cgi mod
