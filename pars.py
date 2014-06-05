@@ -72,25 +72,30 @@ def add_lanes(maxln, ln):
         newln = [ln[0], ln[1], ln[2], ln[3]]
         maxln.append(newln)
 
-tree = ET.parse('LaneActual.xml')
-root = tree.getroot()
-#print (root.tag, root.attrib)
-ln = ["","","",""]
-maxln = []
+def getmobalineinfo()
+    tree = ET.parse('LaneActual.xml')
+    root = tree.getroot()
+    #print (root.tag, root.attrib)
+    ln = ["","","",""]
+    maxln = []
 
-cnt = 0
-for child in root:
-    cnt = cnt + 1
-    #print (child.tag)
-    if child.tag == '{omlNamespace}Lane':
-        pars_lanes(child, ln);
-        add_lanes(maxln, ln)
+    cnt = 0
+    for child in root:
+        cnt = cnt + 1
+        #print (child.tag)
+        if child.tag == '{omlNamespace}Lane':
+            pars_lanes(child, ln);
+            add_lanes(maxln, ln)
 
-    #if cnt==90: break
+        #if cnt==90: break
 
-#print()
-#for curln in maxln:
-#    print (curln)
+    #print()
+    #for curln in maxln:
+    #    print (curln)
+    
+    with open('maxln.json', 'w') as outfile:
+        json.dump(maxln,outfile)
 
-with open('maxln.json', 'w') as outfile:
-    json.dump(maxln,outfile)
+if __name__ == "__main__":
+    getmobalineinfo()
+    
