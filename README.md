@@ -16,8 +16,12 @@ file list:
     barcode.bas          - example output of barcode script to thermal printer
     barcode.template.bas - barcode template to create barcode.bas
     printer.config       - example of printer config
-    printonkeyborard.py  - script prints label to printer on keypressed
     setbarcode.py        - script creates barcode.bas from barcode.template using printer.config
+    LaneActual.xml       - xml data file from MOBA with line information
+    maxln.json           - json examle output of pars.py script
+    pars.py              - script parses LaneActual.xml file and puts last line values in maxln.json
+    printonkeyborard.py  - script prints label to printer on keypressed
+    buttonprint.py       - script prints label to printer on pin low
    
 directory structure:
 
