@@ -16,7 +16,7 @@ def getch():
     return ch
 
 
-while 1==1:
+while True:
     ch = getch()
     if ch == 'q':
         break;
