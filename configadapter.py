@@ -1,7 +1,10 @@
 #! /usr/bin/python
 #
-import ConfigParser
+#import ConfigParser
+import configparser
 import os
+
+ConfigParser = configparser
 
 #fname = '/home/pi/printer.config';
 fname = 'printer.config';

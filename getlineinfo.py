@@ -27,6 +27,7 @@ def readlineinfo(readtype = 'config'):
     for curln in data:
         if tpc[0] == curln[1]:
             return (tpc[0], tpc[1], curln[3], curln[2])
+    return (tpc[0], tpc[1], "","")
 
 if __name__ == "__main__":
     tp = readlineinfo()
