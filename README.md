@@ -19,9 +19,10 @@ file list:
     setbarcode.py        - script creates barcode.bas from barcode.template using printer.config
     LaneActual.xml       - xml data file from MOBA with line information
     maxln.json           - json examle output of pars.py script
-    pars.py              - script parses LaneActual.xml file and puts last line values in maxln.json
-    printonkeyborard.py  - script prints label to printer on keypressed
-    buttonprint.py       - script prints label to printer on pin low
+    xmlparser.py         - parses LaneActual.xml file and puts last line values in maxln.json
+    getlineinfo.py       - gets line info for device  
+    printonkeyborard.py  - prints label to printer on keypressed
+    buttonprint.py       - prints label to printer on pin low
    
 directory structure:
 
@@ -29,8 +30,12 @@ directory structure:
         barcode.bas
         barcode.template.bas
         printer.config
+        LaneActual.xml
+        maxln.json
+        xmlparser.py
         printonkeyborard.py
         setbarcode.py
+        buttonprint.py
     /var/www/cgi-bin/
         adm.html
         adm.py
