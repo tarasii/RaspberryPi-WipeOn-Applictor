@@ -23,4 +23,4 @@ while 1==1:
 
     #print ch
     setbarcode.barcodefromconfig()
-    shutil.copy('/home/pi/barcode.bas', '/home/pi/dev.lp0')
+    shutil.copy('/home/pi/barcode.bas', '/dev/lp0')
