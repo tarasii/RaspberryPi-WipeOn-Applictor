@@ -72,7 +72,7 @@ def add_lanes(maxln, ln):
         newln = [ln[0], ln[1], ln[2], ln[3]]
         maxln.append(newln)
 
-def getmobalineinfo()
+def getmobalineinfo(tofile = True)
     tree = ET.parse('LaneActual.xml')
     root = tree.getroot()
     #print (root.tag, root.attrib)
@@ -89,12 +89,14 @@ def getmobalineinfo()
 
         #if cnt==90: break
 
-    #print()
-    #for curln in maxln:
-    #    print (curln)
-    
-    with open('maxln.json', 'w') as outfile:
-        json.dump(maxln,outfile)
+
+    if tofile:
+        with open('maxln.json', 'w') as outfile:
+            json.dump(maxln,outfile)
+    else:
+        print()
+        for curln in maxln:
+            print (curln)
 
 if __name__ == "__main__":
     getmobalineinfo()
