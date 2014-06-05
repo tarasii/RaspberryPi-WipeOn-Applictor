@@ -9,6 +9,8 @@ def pars_product_property(elem, ln):
                 ln[3] = child.text
             elif child.text in ['ROBOT-KVOCHKA','Квочка Е3810']:
                 ln[3] = "QUO"
+            elif child.text == 'Треснувшее':
+                ln[3] = "CM"
             #elif child.text == 'konets mashiny':
             #    ln[3] = "END"
             else:
@@ -60,7 +62,7 @@ def pars_lanes(elem, ln):
 
 def add_lanes(maxln, ln):
     fnd = False
-    print(ln)
+    #print(ln)
     for curln in maxln:
         if ln[1] == curln[1]:
             curln[0] = ln[0]
@@ -72,7 +74,7 @@ def add_lanes(maxln, ln):
         newln = [ln[0], ln[1], ln[2], ln[3]]
         maxln.append(newln)
 
-def getmobalineinfo(tofile = True)
+def getmobalineinfo(tofile = True):
     tree = ET.parse('LaneActual.xml')
     root = tree.getroot()
     #print (root.tag, root.attrib)
@@ -94,10 +96,12 @@ def getmobalineinfo(tofile = True)
         with open('maxln.json', 'w') as outfile:
             json.dump(maxln,outfile)
     else:
-        print()
         for curln in maxln:
             print (curln)
 
+    print ("done")
+    
+
 if __name__ == "__main__":
-    getmobalineinfo()
+    getmobalineinfo(False)
     

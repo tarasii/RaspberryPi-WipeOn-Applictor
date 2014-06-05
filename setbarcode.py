@@ -1,25 +1,9 @@
 #! /usr/bin/python
 #
-import ConfigParser
-
-
-def fromfile():
-    fp = open('/home/pi/printer.config')
-    config = ConfigParser.RawConfigParser()
-    config.readfp(fp)
-    tp_res = (config.getboolean('main','manual'),
-        config.get('main','line'),
-        config.get('main','barcode'),
-        config.get('main','color'),
-        config.get('main','category'),
-        "Editing...")
-    fp.close()
-    return tp_res
-
+import configadapter
 
 def barcodefromconfig(tofile = True):
-    config = ConfigParser.RawConfigParser()
-    tp = fromfile()
+    tp = configadapter.fromfile()
 
     ft = open('/home/pi/barcode.template.bas')
     str = ft.read()
@@ -39,7 +23,7 @@ def barcodefromconfig(tofile = True):
         fd.write(out)
         fd.close()
     else:
-        print out
+        print (out)
 
 
 if __name__ == "__main__":
