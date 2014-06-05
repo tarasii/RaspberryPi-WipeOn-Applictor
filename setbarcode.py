@@ -28,7 +28,9 @@ def barcodefromconfig(tofile = True):
     cl_d = {"white": "W",
         "brown": "B"}
 
-    z = (tp[2],  tp[4], cl_d[tp[3]], tp[1])
+    dt = datetime.now()
+
+    z = (dt.day, dt.month, dt.year, tp[2],  tp[4], cl_d[tp[3]], tp[1], tp[5])
 
     out = str % z
 
