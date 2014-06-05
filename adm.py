@@ -3,6 +3,15 @@
 import ConfigParser
 import cgi
 
+cl_d = {"white": ("selected", ""),
+    "brown": ("", "selected")}
+
+ct_d = {"C0": ("selected", "", "", "", ""),
+    "C1": ("", "selected", "", "", ""),
+    "C2": ("", "", "selected", "", ""),
+    "CW": ("", "", "", "selected", ""),
+    "CM": ("", "", "", "", "selected")}
+
 def chck(frm, name):
     res = ""
     if frm.has_key(name):
@@ -63,17 +72,6 @@ ft = open('/var/www/cgi-bin/adm.html')
 str = ft.read()
 ft.close()
 
-z = (buf,) + tp[1:3]
-
-cl_d = {"white": ("selected", ""),
-    "brown": ("", "selected")}
-
-ct_d = {"C0": ("selected", "", "", "", ""),
-    "C1": ("", "selected", "", "", ""),
-    "C2": ("", "", "selected", "", ""),
-    "CW": ("", "", "", "selected", ""),
-    "CM": ("", "", "", "", "selected")}
-
-z = z + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5],)
+z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5],)
 
 print str % z
