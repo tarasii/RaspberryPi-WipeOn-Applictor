@@ -55,6 +55,7 @@ def fromform():
         chck(form, "BarCode"),
         chck(form, "Color"),
         chck(form, "Category"),
+        chck(form, "enterprise"),
         "Saved...")
     return tp_res
 
