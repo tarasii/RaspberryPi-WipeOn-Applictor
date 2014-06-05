@@ -17,23 +17,28 @@ def fromfile():
     return tp_res
 
 
-config = ConfigParser.RawConfigParser()
-tp = fromfile()
+def barcodefromconfig(tofile = True):
+    config = ConfigParser.RawConfigParser()
+    tp = fromfile()
 
-ft = open('/home/pi/barcode.template.bas')
-str = ft.read()
-ft.close()
+    ft = open('/home/pi/barcode.template.bas')
+    str = ft.read()
+    ft.close()
+
+    cl_d = {"white": "W",
+        "brown": "B"}
+
+    z = (tp[2],  tp[4], cl_d[tp[3]], tp[1])
+
+    out = str % z
+
+    if tofile:
+        fd = open('/home/pi/barcode.bas','wb')
+        fd.write(out)
+        fd.close()
+    else:
+        print out
 
 
-cl_d = {"white": "W",
-    "brown": "B"}
-
-z = (tp[2],  tp[4], cl_d[tp[3]], tp[1])
-
-out = str % z
-
-fd = open('/home/pi/barcode.bas','wb')
-fd.write(out)
-fd.close()
-
-print out
+if __name__ == "__main__":
+   barcodefromconfig()
