@@ -10,9 +10,9 @@ def pars_product_property(elem, ln):
             #print ('    ',child.tag, child.text)
             if child.text in ['C0','C0+','C1','C2']:
                 ln[3] = child.text
-            elif child.text in ['ROBOT-KVOCHKA','Квочка Е3810']:
+            elif child.text in ['ROBOT-KVOCHKA', u'Квочка Е3810']:
                 ln[3] = "QUO"
-            elif child.text == 'Треснувшее':
+            elif child.text == u'Треснувшее':
                 ln[3] = "CM"
             #elif child.text == 'konets mashiny':
             #    ln[3] = "END"
@@ -23,10 +23,10 @@ def pars_supply_egg(elem, ln):
     for child in elem: 
         if child.tag == '{omlNamespace}Type':
             #print ('    ',child.tag, child.text)
-            if child.text == 'коричневое':
+            if child.text == u'коричневое':
                 ln[2] = 'B'
 
-            if child.text == 'белое':
+            if child.text == u'белое':
                 ln[2] = 'W'
                 
             #ln[2] = child.text
