@@ -22,7 +22,7 @@ file list:
     xmlparser.py         - parses LaneActual.xml file and puts last line values in maxln.json
     getlineinfo.py       - gets line info for device  
     printonkeyborard.py  - prints label to printer on keypressed
-    buttonprint.py       - prints label to printer on pin low
+    printonbutton.py     - prints label to printer on pin low
    
 directory structure:
 
@@ -33,9 +33,9 @@ directory structure:
         LaneActual.xml
         maxln.json
         xmlparser.py
-        printonkeyborard.py
         setbarcode.py
-        buttonprint.py
+        printonkeyborard.py
+        printonbutton.py
     /var/www/cgi-bin/
         adm.html
         adm.py
