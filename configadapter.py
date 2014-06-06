@@ -1,6 +1,5 @@
 #! /usr/bin/python
 #
-#import ConfigParser
 import os
 if os.name == 'nt':
     import configparser
