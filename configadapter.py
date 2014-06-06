@@ -1,10 +1,12 @@
 #! /usr/bin/python
 #
 #import ConfigParser
-import configparser
 import os
-
-ConfigParser = configparser
+if os.name == 'nt':
+    import configparser
+    ConfigParser = configparser
+else:
+    import ConfigParser
 
 #fname = '/home/pi/printer.config';
 fname = 'printer.config';
