@@ -78,7 +78,7 @@ Lighttpd config file changes:
 
 to restart lighttpd:
 
-    service lighttpd restart
+    sudo service lighttpd restart
     
 detailed information on lighttpd install with python cgi:
 
