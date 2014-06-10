@@ -71,7 +71,7 @@ Lighttpd config file changes:
         cgi.assign = (".py" => "/usr/bin/python")
     }
 
-    #rewrite rule redirects any url to our adm.py cgi script
+    #rewrite rule redirects any url to adm.py cgi script
     url.rewrite-once = (
         "^/adm\.py(.*)$" => "/cgi-bin/adm.py$1",
         "^/(.*)$" => "/cgi-bin/adm.py$1",
