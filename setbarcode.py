@@ -1,6 +1,7 @@
 #! /usr/bin/python
 #
 import configadapter
+from datetime import datetime
 
 def barcodefromconfig(tofile = True):
     tp = configadapter.fromfile()
