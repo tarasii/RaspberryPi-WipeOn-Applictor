@@ -1,6 +1,6 @@
 #! /usr/bin/python
 #
-import configadapter.py
+import configadapter
 import cgi
 
 cl_d = {"white": ("selected", ""),
@@ -20,12 +20,12 @@ def chck(frm, name, default = ""):
     return res
 
 def fromform():
-    buf = chck(form, "Manual")
+    buf = chck(form, "manual")
     tp_res = (buf == 'on',
-        chck(form, "LineNumber"),
-        chck(form, "BarCode"),
-        chck(form, "Color"),
-        chck(form, "Category"),
+        chck(form, "lineNumber"),
+        chck(form, "barCode"),
+        chck(form, "color"),
+        chck(form, "category"),
         chck(form, "enterprise"),
         "Saved...")
     return tp_res
