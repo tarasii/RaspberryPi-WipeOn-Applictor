@@ -49,7 +49,10 @@ The printonkeyboard.py script calls setbarcode.py to create fresh barcode.bas an
 
 To setup web administration page you need to install lighttpd with pyton cgi mod
 
+    sudo apt-get update
     sudo apt-get install lighttpd
+    
+    sudo nano /etc/lighttpd/lighttpd.conf
     
 Lighttpd config file changes:
     
