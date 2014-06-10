@@ -73,4 +73,11 @@ Lighttpd config file changes:
         "^/$" => "/cgi-bin/adm.py$1",
     )
 
-http://mike632t.wordpress.com/2013/09/21/installing-lighttpd-with-python-cgi-support/
+to restart lighttpd:
+
+    service lighttpd restart
+    
+detailed information on lighttpd install with python cgi:
+
+    http://mike632t.wordpress.com/2013/09/21/installing-lighttpd-with-python-cgi-support/
+    
