@@ -22,21 +22,21 @@ def chckc(cnf, name, default = ""):
     return res
 
 def fromfile():
-    tp_def = (False,"00","000000000000","white","C0","XXX","Editing...")
+    tp_res = (False,"00","000000000000","white","C0","XXX","Editing...")
     if not os.path.isfile(fname):
         return tp_def
 
-    fp = open(fname)
-    config = ConfigParser.RawConfigParser()
-    config.readfp(fp)
-    tp_res = (chckc(config,'manual',tp_def[0]),
-        chckc(config,'line',       tp_def[1]),
-        chckc(config,'barcode',    tp_def[2]),
-        chckc(config,'color',      tp_def[3]),
-        chckc(config,'category',   tp_def[4]),
-        chckc(config,'enterprise', tp_def[5]),
-        tp_def[6])
-    fp.close()
+    with open(fname) as fp:
+        config = ConfigParser.RawConfigParser()
+        config.readfp(fp)
+        tp_res = (chckc(config,'manual',tp_res[0]),
+            chckc(config,'line',       tp_res[1]),
+            chckc(config,'barcode',    tp_res[2]),
+            chckc(config,'color',      tp_res[3]),
+            chckc(config,'category',   tp_res[4]),
+            chckc(config,'enterprise', tp_res[5]),
+            tp_res[6])
+    
     return tp_res
 
 def savetofile(tp):
@@ -47,8 +47,8 @@ def savetofile(tp):
     config.set('main', 'color',      tp[3])
     config.set('main', 'category',   tp[4])
     config.set('main', 'enterprise', tp[5])
-    fp = open(fname,'wb')
-    config.write(fp);
+    with open(fname,'wb') as fp:
+        config.write(fp);
     
 
 if __name__ == "__main__":
