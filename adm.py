@@ -44,10 +44,16 @@ buf = ""
 if tp[0]:
     buf = "checked"
 
-ft = open('/var/www/cgi-bin/adm.html')
-str = ft.read()
-ft.close()
+str = ""
+with open('/var/www/cgi-bin/adm.html') as ft:
+     str = ft.read()
 
-z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5], tp[6])
+with open('/home/pi/prn.log','r') as fl:
+    lf = len(fl.readlines())
 
-print (str % z)
+z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5], tp[6], lf)
+
+if str=="":
+    print z
+else:
+    print (str % z)
