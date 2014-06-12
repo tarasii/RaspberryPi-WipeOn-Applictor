@@ -48,7 +48,7 @@ str = ""
 with open('/var/www/cgi-bin/adm.html') as ft:
      str = ft.read()
 
-with open('/home/pi/prn.log','r') as fl:
+with open('/home/pi/prnt.log','r') as fl:
     lf = len(fl.readlines())
 
 z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5], tp[6], lf)

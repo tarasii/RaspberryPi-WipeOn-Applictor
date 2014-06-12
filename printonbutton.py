@@ -24,7 +24,7 @@ while True:
                 setbarcode.barcodefromconfig()
                 shutil.copy('/home/pi/barcode.bas', '/dev/lp0')
 		str = "print " + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ")
-                with open('/home/pi/prn.log','wb') as fl:
+                with open('/home/pi/prnt.log','wb') as fl:
                     fl.write(str)
                     
                 sleep(2)

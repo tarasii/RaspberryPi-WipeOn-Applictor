@@ -6,7 +6,7 @@ from collections import Counter
 daycnt = Counter()
 hwrcnt = Counter()
 
-with open('/home/pi/prn.log','r') as fl:
+with open('/home/pi/prnt.log','r') as fl:
     for line in fl.readlines():
         str = line[6:]
         date_object = datetime.strptime(str, '%a %b %d %H:%M:%S %Z %Y ')
