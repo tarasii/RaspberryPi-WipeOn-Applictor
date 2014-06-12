@@ -20,10 +20,12 @@ file list:
     LaneActual.xml       - xml data file from MOBA with line information
     maxln.json           - json examle output of pars.py script
     xmlparser.py         - parses LaneActual.xml file and puts last line values in maxln.json
-    getlineinfo.py       - gets line info for device  
+    getlineinfo.py       - gets line info for device 
+    configadapter.py     - module to serv config file
     printonkeyborard.py  - prints label to printer on keypressed
     printonbutton.py     - prints label to printer on pin low
-   
+    stat.py              - shows day statistic of label print
+    
 directory structure:
 
     /home/pi/
@@ -34,15 +36,17 @@ directory structure:
         maxln.json
         xmlparser.py
         setbarcode.py
+        configadapter.py
         printonkeyborard.py
         printonbutton.py
     /var/www/cgi-bin/
         adm.html
         adm.py
+        stst.py
     /etc/lighttpd/
         lighttpd.conf
 
-The adm.py script writes printer.config file. 
+The adm.py script writes printer.config file. The stst.py script shows label print day statistics. 
 Params from this config file used by setbarcode.py script to create barcode.bas from barcode.template.bas.
 The printonkeyboard.py script calls setbarcode.py to create fresh barcode.bas and sends it to a printer.
 
@@ -73,6 +77,7 @@ Lighttpd config file changes:
 
     #rewrite rule redirects any url to adm.py cgi script
     url.rewrite-once = (
+        "^/stat" => "/cgi-bin/stat.py",
         "^/adm\.py(.*)$" => "/cgi-bin/adm.py$1",
         "^/(.*)$" => "/cgi-bin/adm.py$1",
     )
