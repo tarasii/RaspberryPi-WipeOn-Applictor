@@ -12,6 +12,7 @@ file list:
 
     adm.html             - html template of admin page
     adm.py               - cgi python scrip of admin page
+    stat.py              - shows day statistic of label print
     lighttpd.conf        - example of lighttpd configuration file
     barcode.bas          - example output of barcode script to thermal printer
     barcode.template.bas - barcode template to create barcode.bas
@@ -24,8 +25,7 @@ file list:
     configadapter.py     - module to serv config file
     printonkeyborard.py  - prints label to printer on keypressed
     printonbutton.py     - prints label to printer on pin low
-    stat.py              - shows day statistic of label print
-    
+     
 directory structure:
 
     /home/pi/
