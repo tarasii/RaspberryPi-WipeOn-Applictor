@@ -4,6 +4,7 @@ import sys
 import tty, termios
 import shutil
 import setbarcode
+from datetime import datetime
 
 def getch():
     fd = sys.stdin.fileno()
@@ -24,3 +25,6 @@ while True:
     #print ch
     setbarcode.barcodefromconfig()
     shutil.copy('/home/pi/barcode.bas', '/dev/lp0')
+	str = "print " + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ")
+    with open('/home/pi/prn.log','wb') as fl:
+        fl.write(str)
