@@ -20,6 +20,7 @@ file list:
     setbarcode.py        - script creates barcode.bas from barcode.template using printer.config
     LaneActual.xml       - xml data file from MOBA with line information
     maxln.json           - json examle output of pars.py script
+    prnt.log             - print log file example
     xmlparser.py         - parses LaneActual.xml file and puts last line values in maxln.json
     getlineinfo.py       - gets line info for device 
     configadapter.py     - module to serv config file
