@@ -1,6 +1,7 @@
 from time import sleep
 import shutil
 import setbarcode
+import os
 import RPi.GPIO as GPIO
 from datetime import datetime
 
@@ -22,10 +23,16 @@ while True:
 	    if ( z == True ): 
 	        GPIO.output(17, False)
                 setbarcode.barcodefromconfig()
-                shutil.copy('/home/pi/barcode.bas', '/dev/lp0')
-		str = "print " + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ")
-                with open('/home/pi/prnt.log','wb') as fl:
-                    fl.write(str)
+                if os.path.exists('/dev/lp0'):
+                   shutil.copy('/home/pi/barcode.bas', '/dev/lp0')
+		   str = "print " + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ")
+                   with open('/home/pi/prnt.log','wb') as fl:
+                      fl.write(str)
+                      
+                else:
+		   str = "error " + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ")
+                   with open('/home/pi/prnt.log','wb') as fl:
+                      fl.write(str)
                     
                 sleep(2)
 		GPIO.output(17, True)
