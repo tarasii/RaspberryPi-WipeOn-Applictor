@@ -13,7 +13,7 @@ GPIO.setup(17,GPIO.OUT) #led pin
 GPIO.setup(27,GPIO.IN)  #distance sensor oin
 GPIO.output(17, True)   #led ON - redy
 
-fdev = '/dev/lp0'
+fdev = '/dev/usb/lp0'
 
 p = False
 while True:
