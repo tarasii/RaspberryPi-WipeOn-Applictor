@@ -4,7 +4,7 @@ YEAR = %s
 UPBAR$ = "%s"
 EGG$ = "%s"
 EGGC$ = "%s"
-LNUM$ = "%sL"
+LNUM$ = "%s"
 ENT$ = "%s"
 SIZE 100 mm, 80 mm
 CLS
@@ -14,6 +14,6 @@ TEXT 340, 630, "2", 270, 1, 1, ""+FORMAT$(NOW$(),"yyyy/mm/dd")
 TEXT 340, 400, "2", 270, 1, 1, ""+LNUM$
 TEXT 340, 230, "2", 270, 1, 1, ""+EGG$
 TEXT 340, 100, "2", 270, 1, 1, "360"
-PUTBMP 100, 5, "P009.BMP"
+PUTBMP 100, 5, "P003.BMP"
 PRINT 1
 EOP
