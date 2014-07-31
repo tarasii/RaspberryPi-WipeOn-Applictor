@@ -29,13 +29,14 @@ def printlabel():
         str = "print "
             
     else:
-	    str = "error "
+	str = "error "
         
-	str = str + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ") + "\n"
+    str = str + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ") + "\n"
     with open(flog,'a') as fl:
         fl.write(str)
         
-    return
+    return        
+
 
 printlabel()
 
