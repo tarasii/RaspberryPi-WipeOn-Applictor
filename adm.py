@@ -2,6 +2,7 @@
 #
 import configadapter
 import cgi
+import os
 
 cl_d = {"white": ("selected", ""),
     "brown": ("", "selected")}
@@ -54,8 +55,11 @@ str = ""
 with open('/var/www/cgi-bin/adm.html') as ft:
      str = ft.read()
 
-with open('/home/pi/prnt.log','r') as fl:
-    lf = len(fl.readlines())
+flog = '/home/pi/prnt.log'
+lf = 0
+if os.path.exists(flog):
+    with open(flog,'r') as fl:
+        lf = len(fl.readlines())
 
 z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5],) + cz_d[tp[6]] + (tp[7],) + ct_d[tp[8]] + (tp[9], lf)
 
