@@ -3,6 +3,7 @@ import shutil
 import setbarcode
 import os
 import RPi.GPIO as GPIO
+import sys
 from datetime import datetime
 
 fdev = '/dev/usb/lp0'
@@ -29,6 +30,15 @@ GPIO.setup(4, GPIO.IN)  #button pin
 GPIO.setup(17,GPIO.OUT) #led pin
 GPIO.setup(27,GPIO.IN)  #distance sensor oin
 GPIO.output(17, True)   #led ON - redy
+
+z1 = not GPIO.input(4)
+z2 = not GPIO.input(27)
+z = z1 and z2
+if (z == True):
+   GPIO.output(17, False)
+   GPIO.cleanup()
+   sys.exit()
+
 
 printlabel() #first label when ready
 
