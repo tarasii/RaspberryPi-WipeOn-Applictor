@@ -3,7 +3,6 @@ import shutil
 import setbarcode
 import os
 import RPi.GPIO as GPIO
-import sys
 from datetime import datetime
 
 fdev = '/dev/usb/lp0'
@@ -37,7 +36,7 @@ z = z1 and z2
 if (z == True):
    GPIO.output(17, False)
    GPIO.cleanup()
-   sys.exit()
+   quit()
 
 
 printlabel() #first label when ready
