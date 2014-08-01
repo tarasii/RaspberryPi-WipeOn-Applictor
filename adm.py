@@ -12,6 +12,9 @@ ct_d = {"C0": ("selected", "", "", "", ""),
     "CW": ("", "", "", "selected", ""),
     "CM": ("", "", "", "", "selected")}
 
+cz_d = {"barcode":("selected",""),
+    "fixed":("","selected")}
+
 def chck(frm, name, default = ""):
     res = default
     if frm.has_key(name):
@@ -27,6 +30,9 @@ def fromform():
         chck(form, "color"),
         chck(form, "category"),
         chck(form, "enterprise"),
+        chck(form, "template"),
+        chck(form, "barcode2"),
+        chck(form, "category2"),
         "Saved...")
     return tp_res
     
@@ -51,7 +57,7 @@ with open('/var/www/cgi-bin/adm.html') as ft:
 with open('/home/pi/prnt.log','r') as fl:
     lf = len(fl.readlines())
 
-z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5], tp[6], lf)
+z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5],) + cz_d[tp[6]] + (tp[7],) + ct_d[tp[8]] + (tp[9], lf)
 
 if str=="":
     print z
