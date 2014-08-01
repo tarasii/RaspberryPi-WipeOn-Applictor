@@ -22,7 +22,7 @@ def chckc(cnf, name, default = ""):
     return res
 
 def fromfile():
-    tp_res = (False,"00","000000000000","white","C0","XXX","Editing...")
+    tp_res = (False,"00","000000000000","white","C0","XXX","barcode","00000000000","C0","Editing...")
     if not os.path.isfile(fname):
         return tp_def
 
@@ -35,7 +35,10 @@ def fromfile():
             chckc(config,'color',      tp_res[3]),
             chckc(config,'category',   tp_res[4]),
             chckc(config,'enterprise', tp_res[5]),
-            tp_res[6])
+            chckc(config,'temlate',    tp_res[6]),
+            chckc(config,'barcode2',   tp_res[7]),
+            chckc(config,'category2',  tp_res[8]),
+            tp_res[9])
     
     return tp_res
 
@@ -47,6 +50,9 @@ def savetofile(tp):
     config.set('main', 'color',      tp[3])
     config.set('main', 'category',   tp[4])
     config.set('main', 'enterprise', tp[5])
+    config.set('main', 'template',   tp[6])
+    config.set('main', 'barcode2',   tp[7])
+    config.set('main', 'category2',  tp[8])
     with open(fname,'wb') as fp:
         config.write(fp);
     
