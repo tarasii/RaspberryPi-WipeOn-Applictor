@@ -3,7 +3,7 @@
 import configadapter
 from datetime import datetime
 
-def barcodefromconfig(tofile = True):
+def barcodefromconfig(scnd = False, tofile = True):
     tp = configadapter.fromfile()
 
     ft = open('/home/pi/barcode.template.bas')
@@ -15,7 +15,11 @@ def barcodefromconfig(tofile = True):
 
     dt = datetime.now()
 
-    z = (dt.day, dt.month, dt.year, tp[2],  tp[4], cl_d[tp[3]], tp[1], tp[5])
+    if (scnd == True):
+        z = (dt.day, dt.month, dt.year, tp[7],  tp[8], cl_d[tp[3]], tp[1], tp[5])
+    
+    else:    
+        z = (dt.day, dt.month, dt.year, tp[2],  tp[4], cl_d[tp[3]], tp[1], tp[5])
 
     out = str % z
 
