@@ -1,26 +1,25 @@
 #! /usr/bin/python
 #
 from datetime import datetime
+import os
 from collections import Counter
 
 daycnt = Counter()
 hwrcnt = Counter()
 
-with open('/home/pi/prnt.log','r') as fl:
-    for line in fl.readlines():
-        str = line[6:]
-        date_object = datetime.strptime(str, '%a %b %d %H:%M:%S %Z %Y ')
-        daykey = "%s%02d%02d" % (date_object.year, date_object.month, date_obje$
-        hwrkey = "%s%02d%02d %02d:00" % (date_object.year, date_object.month, d$
-        daycnt[daykey] +=1
-        hwrcnt[hwrkey] +=1
+if os.path.exists(flog):
+    with open('/home/pi/prnt.log','r') as fl:
+        for line in fl.readlines():
+            str = line[6:]
+            date_object = datetime.strptime(str, '%a %b %d %H:%M:%S %Z %Y ')
+            daykey = "%s%02d%02d" % (date_object.year, date_object.month, date_obje$
+            hwrkey = "%s%02d%02d %02d:00" % (date_object.year, date_object.month, d$
+            daycnt[daykey] +=1
+            hwrcnt[hwrkey] +=1
 
 
 #print daycnt
 #print hwrcnt
-
-hwrlst =  list(hwrcnt)
-hwrlst.sort()
 
 print "Content-Type: text/html\n\n"
 print "<hmtl>"
@@ -30,6 +29,9 @@ print "<body>"
 
 print "<h1>Statistics:</h1>"
 
+hwrlst =  list(hwrcnt)
+hwrlst.sort()
+
 bufkey = ""
 for key in hwrlst:
     daykey = key[:8]
@@ -38,6 +40,9 @@ for key in hwrlst:
         bufkey = daykey
 
     print "<a>",key, hwrcnt[key],"</a><br>"
+
+if (bufkey == ""):
+    print "<a>empty</a><br>"
 
 print "</body>"
 print "</html>"
