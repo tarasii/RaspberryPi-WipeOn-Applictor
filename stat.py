@@ -10,6 +10,7 @@ hwrcnt = Counter()
 if os.path.exists(flog):
     with open('/home/pi/prnt.log','r') as fl:
         for line in fl.readlines():
+            line = line.replace("\0","")
             str = line[6:]
             date_object = datetime.strptime(str, '%a %b %d %H:%M:%S %Z %Y ')
             daykey = "%s%02d%02d" % (date_object.year, date_object.month, date_obje$
