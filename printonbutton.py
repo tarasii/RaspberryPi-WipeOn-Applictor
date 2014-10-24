@@ -1,28 +1,9 @@
+#! /usr/bin/python
+
 from time import sleep
-import shutil
-import setbarcode
-import os
 import RPi.GPIO as GPIO
-from datetime import datetime
+import printlabel
 
-fdev = '/dev/usb/lp0'
-flog = '/home/pi/prn.log'
-fbar = '/home/pi/barcode.bas'
-
-def printlabel():
-    setbarcode.barcodefromconfig()
-    if os.path.exists(fdev):
-        shutil.copy(fbar, fdev)
-        str = "print "
-            
-    else:
-	str = "error "
-        
-    str = str + datetime.utcnow().strftime("%a %b %d %H:%M:%S EEST %Y ") + "\n"
-    with open(flog,'a') as fl:
-        fl.write(str)
-        
-    return 
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN)  #button pin
@@ -38,8 +19,7 @@ if (z == True):
    GPIO.cleanup()
    quit()
 
-
-printlabel() #first label when ready
+printlabel.printlabel() #first label when ready
 
 p = False
 while True:
@@ -49,7 +29,7 @@ while True:
    if ( z != p ):
       if ( z == True ): 
          GPIO.output(17, False)
-         printlabel()
+         printlabel.printlabel()
          sleep(2)
          GPIO.output(17, True)
 		
