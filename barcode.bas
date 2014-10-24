@@ -1,8 +1,9 @@
-UPBAR$ = "280000000001"
-EGG$ = "C1"
-EGGC$ = "W"
-LNUM$ = "03L"
-ENT$ = "XPA"
+UPBAR$ = "210000000000"
+EGG$ = "1"
+EGGC$ = "0"
+LNUM$ = "003"
+ENT$ = "APA"
+ID$ = "000010"
 SIZE 100 mm, 80 mm
 CLS
 BARCODE 90, 50, "EAN13", 80,  0, 90, 6, 0, UPBAR$
