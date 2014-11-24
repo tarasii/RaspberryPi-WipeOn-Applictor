@@ -26,14 +26,15 @@ def chck(frm, name, default = ""):
 def fromform():
     buf = chck(form, "manual")
     tp_res = (buf == 'on',
-        chck(form, "lineNumber"),
-        chck(form, "barCode"),
-        chck(form, "color"),
-        chck(form, "category"),
-        chck(form, "enterprise"),
-        chck(form, "template"),
-        chck(form, "barcode2"),
-        chck(form, "category2"),
+        chck(form, "lineNumber",tp[1]),
+        chck(form, "barCode",   tp[2]),
+        chck(form, "color",     tp[3]),
+        chck(form, "category",  tp[4]),
+        chck(form, "enterprise",tp[5]),
+        chck(form, "template",  tp[6]),
+        chck(form, "barcode2",  tp[7]),
+        chck(form, "category2", tp[8]),
+        chck(form, "number",    tp[9]),
         "Saved...")
     return tp_res
     
@@ -41,10 +42,9 @@ form = cgi.FieldStorage()
 
 print "Content-Type: text/html\n\n"
 
-if len(form) == 0:
-    tp = configadapter.fromfile()
-else:
-    tp = fromform()
+tp = configadapter.fromfile()
+if len(form) != 0:
+    tp = fromform(tp)
     configadapter.savetofile(tp)
 
 buf = ""
