@@ -65,6 +65,7 @@ def savetofile(tp):
     config.set('main', 'template',   tp[6])
     config.set('main', 'barcode2',   tp[7])
     config.set('main', 'category2',  tp[8])
+    config.set('main', 'number',     tp[9])
     with open(fname,'wb') as fp:
         config.write(fp);
     
