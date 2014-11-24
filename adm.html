@@ -8,39 +8,69 @@
         <a>Set barcode method:</a><br>
         <input type="checkbox" name="manual" %s>Manual<br>
         <a>Line number:</a><br>
-        <input name="line" maxlength=3 value=%s><br>
-        <a>Barcode:</a><br>
-        <input name="barcode" maxlength=12 value=%s><br>
+        <input name="line" maxlength=3 value=%s disabled><br>
+        <a>Enterprise name:</a><br>
+        <input name="enterprise" maxlength=3 value=%s disabled><br>
+        <a>Template:</a><br>
+        <select name="template">
+            <option %s value = "barcode">barcode</option>
+            <option %s value = "fixed">fixed</option>
+        </select><br>
+        <a>Egg color:</a><br>
+        <input name="line" maxlength=3 value=%s disabled><br>
+        <a>Enterprise name:</a><br>
+        <input name="enterprise" maxlength=3 value=%s disabled><br>
+        <a>Template:</a><br>
+        <select name="template">
+            <option %s value = "barcode">barcode</option>
+            <option %s value = "fixed">fixed</option>
+        </select><br>
         <a>Egg color:</a><br>
         <select name="color">
             <option %s value = "white">White</option>
             <option %s value = "brown">Brown</option>
         </select><br>
-        <a>Egg category:</a><br>
+        <a>Egg category right:</a><br>
         <select name="category">
             <option %s value = "C0">C0</option>
             <option %s value = "C1">C1</option>
             <option %s value = "C2">C2</option>
-            <option %s value = "CW">CW</option>
+            <option %s value = "C+">C+</option>
+            <option %s value = "white">White</option>
+            <option %s value = "brown">Brown</option>
+        </select><br>
+        <a>Egg category right:</a><br>
+        <select name="category">
+            <option %s value = "C0">C0</option>
+            <option %s value = "C1">C1</option>
+            <option %s value = "C2">C2</option>
+            <option %s value = "C+">C+</option>
             <option %s value = "CM">CM</option>
          </select><br>
-        <a>Enterprise name:</a><br>
-        <input name="enterprise" maxlength=3 value=%s><br>
-        <select name="template">
-            <option %s value = "barcode">barcode</option>
-            <option %s value = "fixed">fixed</option>
-        </select><br>
-        <a>Barcode2:</a><br>
-        <input name="barcode2" maxlength=12 value=%s><br>
-        <a>Egg category:</a><br>
+        <a>Barcode right:</a><br>
+        <input name="barcode" maxlength=12 value=%s><br>
+        <a>Egg category left:</a><br>
         <select name="category2">
             <option %s value = "C0">C0</option>
             <option %s value = "C1">C1</option>
             <option %s value = "C2">C2</option>
-            <option %s value = "CW">CW</option>
+            <option %s value = "C+">C+</option>
+         </select><br>
+        <a>Barcode right:</a><br>
+        <input name="barcode" maxlength=12 value=%s><br>
+        <a>Egg category left:</a><br>
+        <select name="category2">
+            <option %s value = "C0">C0</option>
+            <option %s value = "C1">C1</option>
+            <option %s value = "C2">C2</option>
+            <option %s value = "C+">C+</option>
             <option %s value = "CM">CM</option>
         </select><br>
-     </p>
+        <a>Barcode left:</a><br>
+        <input name="barcode2" maxlength=12 value=%s><br>
+        <a>Count:</a><br>
+        <input name="number" maxlength=12 value=%s disabled><br>
+    </p>
     <p>
         <b>Status:</b>
         <a>%s</a><br>
