@@ -1,14 +1,16 @@
 #! /usr/bin/python
 #
 import os
+import sqlite3
 if os.name == 'nt':
     import configparser
     ConfigParser = configparser
 else:
     import ConfigParser
 
-#fname = '/home/pi/printer.config';
-fname = 'printer.config';
+fname = '/home/pi/printer.config';
+#fname = 'printer.config';
+fdb = '/home/pi/print.db'
 config = ConfigParser.RawConfigParser()
 
 def chckc(cnf, name, default = ""):
@@ -22,7 +24,7 @@ def chckc(cnf, name, default = ""):
     return res
 
 def fromfile():
-    tp_res = (False,"00","000000000000","white","C0","XXX","barcode","00000000000","C0","Editing...")
+    tp_res = (False,"00","000000000000","white","C0","XXX","barcode","00000000000","C0","1","0","Editing...")
     if not os.path.isfile(fname):
         return tp_def
 
@@ -38,7 +40,9 @@ def fromfile():
             chckc(config,'temlate',    tp_res[6]),
             chckc(config,'barcode2',   tp_res[7]),
             chckc(config,'category2',  tp_res[8]),
-            tp_res[9])
+            chckc(config,'number',     tp_res[9]),
+            idcnt,
+            tp_res[11])
     
     return tp_res
 
