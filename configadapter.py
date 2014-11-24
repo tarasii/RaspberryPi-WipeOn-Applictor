@@ -28,6 +28,14 @@ def fromfile():
     if not os.path.isfile(fname):
         return tp_def
 
+    conn = sqlite3.connect(fdb)
+    c = conn.cursor()
+    c.execute("SELECT COUNT() FROM printid")
+    r = c.fetchone()
+    idcnt = 0
+    if r[0]:
+       idcnt = r[0]
+       
     with open(fname) as fp:
         config = ConfigParser.RawConfigParser()
         config.readfp(fp)
