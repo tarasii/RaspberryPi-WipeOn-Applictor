@@ -35,6 +35,7 @@ def fromform():
         chck(form, "barcode2",  tp[7]),
         chck(form, "category2", tp[8]),
         chck(form, "number",    tp[9]),
+        tp[10],
         "Saved...")
     return tp_res
     
@@ -55,13 +56,13 @@ str = ""
 with open('/var/www/cgi-bin/adm.html') as ft:
      str = ft.read()
 
-flog = '/home/pi/prnt.log'
-lf = 0
-if os.path.exists(flog):
-    with open(flog,'r') as fl:
-        lf = len(fl.readlines())
+#flog = '/home/pi/prnt.log'
+#lf = 0
+#if os.path.exists(flog):
+#    with open(flog,'r') as fl:
+#        lf = len(fl.readlines())
 
-z = (buf,) + tp[1:3] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[5],) + cz_d[tp[6]] + (tp[7],) + ct_d[tp[8]] + (tp[9], lf)
+z = (buf,) + (tp[1], tp[5],)+ cz_d[tp[6]] + cl_d[tp[3]] + ct_d[tp[4]] + (tp[2],) + ct_d[tp[8]] + (tp[7], tp[9], tp[11], tp[10])
 
 if str=="":
     print z
