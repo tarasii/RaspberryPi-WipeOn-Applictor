@@ -10,5 +10,7 @@ print myhtml.Html("test",
         myhtml.NL(),
         myhtml.SubmitButton("save"),
         myhtml.CancelButton("cancel"),
+        myhtml.NL(),      
+        myhtml.HyperLink("google.com"),
        )),
    ))
