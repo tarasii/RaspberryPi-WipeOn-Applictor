@@ -57,7 +57,7 @@ def TableElement(eltype, tp):
    patern = "<%s>%s</$s>\n"
    return patern % (elytpe, res, eltype)
 
-def TabelCell(eltype, tp):
+def TabelCell(tp):
    return TableElement("td", tp)
 
 def TabelRow(tp):
