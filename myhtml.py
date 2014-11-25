@@ -20,10 +20,11 @@ def Input(name, val):
 def TextBox(name, val):
    return Label(name+": ")+Input(name,val)
 
-def InputCheckBox(name, ch = False):
-   chtxt = ""
-   if ch : chtxt = "checked"
-   patern = "<input type=checkbox name=%s %s>\n"
+def TextBox(name, val):
+   return Label(name+": ")+Input(name,val)
+
+def HyperLink(text, link):
+   patern = "<a hrerf=%s>%s</a>\n"
    return patern % (name, chtxt)
 
 def CheckBox(name, ch = False):
@@ -31,6 +32,24 @@ def CheckBox(name, ch = False):
 
 def NL():
    return "<br>\n"
+
+#<<tables   
+def TableElement(eltype, tp):
+   res = ""
+   for el in tp:
+      res = res + el
+   patern = "<%s>%s</$s>\n"
+   return patern % (elytpe, res, eltype)
+
+def TabelCell(eltype, tp):
+   return TableElement("td", tp):
+
+def TabelRow(tp):
+   return TableElement("tr", tp):
+
+def TabelHeader(tp):
+   return TableElement("th", tp):
+#tables>>
 
 def Form(tp):
    res = "<form name=settings method=post>\n"
