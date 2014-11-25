@@ -30,7 +30,7 @@ def HyperLink(link, text=""):
 
    if link.lower().find(pref)==-1:
       link = pref + link
-
+ 
    patern = "<a href=%s>%s</a>\n"
    return patern % (link, text)
 
@@ -41,22 +41,26 @@ def NL():
    return "<br>\n"
 
 #<<tables   
-def TableElement(eltype, tp):
+def TableElement(eltype, tp, attr = ""):
    res = ""
    if not tp:
       tp = ("",)
 
    if isinstance(tp, basestring):
       res = tp
-   elif isinstance(lst, (list, tuple)):
+   elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
 
-   patern = "<%s>%s</%s>\n"
-   return patern % (eltype, res, eltype)
+   patern = "<%s%s>%s</%s>\n"
+   return patern % (eltype, attr, res, eltype)
 
-def TabelCell(tp):
-   return TableElement("td", tp)
+def TabelCell(tp, cs=0):
+   attr = ""
+   if cs!=0:
+      attr = " colspan = %s" % cs
+ 
+   return TableElement("td", tp, attr)
 
 def TabelRow(tp):
    return TableElement("tr", tp)
@@ -72,10 +76,10 @@ def Form(tp):
 
    if isinstance(tp, basestring):
       res = tp
-   elif isinstance(lst, (list, tuple)):
+   elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
-
+      
    res = res + "</form>"
    return res
 
@@ -83,15 +87,15 @@ def Html(name, tp):
    res = "Content-Type: text/html\n\n"
    res = res + "<html>\n<head>\n<meta content=text/html; charset=UTF-8 />\n"
    res = res + "<title>%s</title>\n" % (name,)
-
+   
    if not tp:
       tp = ("",)
 
    if isinstance(tp, basestring):
       res = tp
-   elif isinstance(lst, (list, tuple)):
+   elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
-
+   
    res = res + "</body>\n</html>"
    return res

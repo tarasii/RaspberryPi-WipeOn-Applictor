@@ -26,6 +26,9 @@ file list:
     configadapter.py     - module to serv config file
     printonkeyborard.py  - prints label to printer on keypressed
     printonbutton.py     - prints label to printer on pin low
+    myhtml.py            - very simple html framework
+    myhtmltest.py        - simple test of html framework
+    myhtmltest.html      - result of simle html test  
      
 directory structure:
 
@@ -44,6 +47,7 @@ directory structure:
         adm.html
         adm.py
         stst.py
+        myhtml.py
     /etc/lighttpd/
         lighttpd.conf
 
