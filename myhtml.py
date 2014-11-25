@@ -89,8 +89,11 @@ def TableLine(tp=""):
 def TableHead(tp=""):
    return TableElement("th", tp)
 
-def Table(tp=""):
-   return TableElement("table", tp)
+def Table(tp="",border=0):
+   attr = " width=100% cellspacing=1"
+   if border!=0:
+      attr = attr + " border=%s" % border
+   return TableElement("table", tp, attr)
 
 def TD(tp="", cs=0):
    return TableCell(tp, cs)
