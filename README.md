@@ -26,6 +26,7 @@ file list:
     configadapter.py     - module to serv config file
     printonkeyborard.py  - prints label to printer on keypressed
     printonbutton.py     - prints label to printer on pin low
+    printlabel.py        - module prints label
     myhtml.py            - very simple html framework
     myhtmltest.py        - simple test of html framework
     myhtmltest.html      - result of simle html test  
@@ -43,6 +44,7 @@ directory structure:
         configadapter.py
         printonkeyborard.py
         printonbutton.py
+        printlabel.py
     /var/www/cgi-bin/
         adm.html
         adm.py
