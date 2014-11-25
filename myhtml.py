@@ -2,8 +2,16 @@
 #
 
 def Label(name):
-   patern = "<a>%s<a/>\n"
+   patern = "<a>%s</a>\n"
    return patern % (name, )
+
+def Paragraph(txt):
+   patern = "<p>%s</p>\n"
+   return patern % (txt,)
+
+def Header(txt):
+   patern = "<h1>%s</h1>\n"
+   return patern % (txt,)
 
 def SubmitButton(name):
    patern = "<input type=submit value=%s>\n"
@@ -13,7 +21,7 @@ def CancelButton(name):
    patern = "<input type=reset value=%s>\n"
    return patern % (name, )
 
-def Input(name, val):
+def Input(name, val=""):
    patern = "<input name=%s value=%s>\n"
    return patern % (name, val)
 
@@ -34,17 +42,27 @@ def HyperLink(link, text=""):
    patern = "<a href=%s>%s</a>\n"
    return patern % (link, text)
 
+def InputCheckBox(name, ch = False):
+   chtxt = ""
+   if ch : chtxt = "checked"
+   patern = "<input type=checkbox name=%s %s>\n"
+   return patern % (name, chtxt)
+
 def CheckBox(name, ch = False):
    return InputCheckBox(name, ch)+Label(name)
 
 def NL():
    return "<br>\n"
 
+def BR():
+   return NL()
+
 #<<tables   
 def TableElement(eltype, tp, attr = ""):
    res = ""
    if not tp:
       tp = ("",)
+
 
    if isinstance(tp, basestring):
       res = tp
@@ -55,19 +73,37 @@ def TableElement(eltype, tp, attr = ""):
    patern = "<%s%s>%s</%s>\n"
    return patern % (eltype, attr, res, eltype)
 
-def TabelCell(tp, cs=0):
+def TableCell(tp, cs=0):
    attr = ""
    if cs!=0:
       attr = " colspan = %s" % cs
  
    return TableElement("td", tp, attr)
 
-def TabelRow(tp):
+def TableRow(tp=""):
    return TableElement("tr", tp)
 
-def TabelHeader(tp):
+def TableLine(tp=""):
+   return TableRow(tp)
+
+def TableHead(tp=""):
    return TableElement("th", tp)
+
+def Table(tp=""):
+   return TableElement("table", tp)
+
+def TD(tp="", cs=0):
+   return TableCell(tp, cs)
+
+def TR(tp=""):
+   return TableRow(tp)
+
+def TH(tp=""):
+   return TableHead(tp)
+
 #tables>>
+
+
 
 def Form(tp):
    res = "<form name=settings method=post>\n"
@@ -75,7 +111,7 @@ def Form(tp):
       tp = ("",)
 
    if isinstance(tp, basestring):
-      res = tp
+      res = res + tp
    elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
@@ -92,7 +128,7 @@ def Html(name, tp):
       tp = ("",)
 
    if isinstance(tp, basestring):
-      res = tp
+      res = res + tp
    elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
