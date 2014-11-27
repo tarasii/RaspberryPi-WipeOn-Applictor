@@ -58,18 +58,12 @@ def BR():
    return NL()
 
 #<<tables   
-def TableElement(eltype, tp, attr = ""):
+def TableElement(eltype, attr, tp):
    res = ""
-   if not tp:
-      tp = ("",)
-
-
-   if isinstance(tp, basestring):
-      res = tp
-   elif isinstance(tp, (list, tuple)):
-      for el in tp:
-         res = res + el
-
+   res = res + CheckTuple(tp)
+   if not attr.startswith(" "):
+      attr = " "+attr
+ 
    patern = "<%s%s>%s</%s>\n"
    return patern % (eltype, attr, res, eltype)
 
@@ -78,38 +72,47 @@ def TableCell(tp, cs=0):
    if cs!=0:
       attr = " colspan = %s" % cs
  
-   return TableElement("td", tp, attr)
+   return TableElement("td", attr, tp)
 
 def TableRow(tp=""):
-   return TableElement("tr", tp)
+   return TableElement("tr", "", tp)
 
 def TableLine(tp=""):
    return TableRow(tp)
 
 def TableHead(tp=""):
-   return TableElement("th", tp)
+   return TableElement("th", "", tp)
 
-def Table(tp="",border=0):
-   attr = " width=100% cellspacing=1"
-   if border!=0:
-      attr = attr + " border=%s" % border
-   return TableElement("table", tp, attr)
+def Table(attr = "", *tp):
+   #attr = " width=100% cellspacing=1"
+   attr.lower()
+   if attr.find("cellspacing")==-1:
+       attr = attr + " cellspacing=1"
+   
+   #if border:
+   #   attr = attr + " border=%s" % border
+   #
+   #if width:
+   #   attr = attr + " width=" + width
+   #for param in tp
+   #   if isinstance(param, dict):   
 
-def TD(tp="", cs=0):
-   return TableCell(tp, cs)
+   return TableElement("table", attr, tp)
 
-def TR(tp=""):
+def TD(*tp):
+   #return TableCell(tp, cs)
+   return TableCell(tp)
+
+def TR(*tp):
    return TableRow(tp)
 
-def TH(tp=""):
+def TH(*tp):
    return TableHead(tp)
 
 #tables>>
 
-
-
-def Form(tp):
-   res = "<form name=settings method=post>\n"
+def CheckTuple(tp):
+   res = ""
    if not tp:
       tp = ("",)
 
@@ -118,23 +121,19 @@ def Form(tp):
    elif isinstance(tp, (list, tuple)):
       for el in tp:
          res = res + el
-      
+   
+   return res
+
+def Form(name, *tp):
+   res = "<form name=%s method=post>\n" % (name,)
+   res = res + CheckTuple(tp)
    res = res + "</form>"
    return res
 
-def Html(name, tp):
+def Html(name, *tp):
    res = "Content-Type: text/html\n\n"
    res = res + "<html>\n<head>\n<meta content=text/html; charset=UTF-8 />\n"
    res = res + "<title>%s</title>\n" % (name,)
-   
-   if not tp:
-      tp = ("",)
-
-   if isinstance(tp, basestring):
-      res = res + tp
-   elif isinstance(tp, (list, tuple)):
-      for el in tp:
-         res = res + el
-   
+   res = res + CheckTuple(tp)
    res = res + "</body>\n</html>"
    return res
