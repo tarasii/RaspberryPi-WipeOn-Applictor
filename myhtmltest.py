@@ -12,12 +12,12 @@ print Html("test",
 #        NL(),
 #        HyperLink("google.com"),
 #        BR(),
-        #Table(
+        Table("","xxx"
         #   TR(TH("1"),TH("2"),TH("3")),
         #    TR(TD("test"),TD("zzz"),TD("aaa")),
         #    TR(TD(Input("test")),TD("MY"),TD("ny"))
-        #   ),
-        #BR(),
+           ),
+        BR(),
         Table("border = 1",
            TR(TH("1"),TH("2"),TH("3")),
             TR(TD("4"),TD("5"),TD("6")),

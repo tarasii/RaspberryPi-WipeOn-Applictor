@@ -58,7 +58,7 @@ def BR():
    return NL()
 
 #<<tables   
-def TableElement(eltype, attr, tp):
+def TableElement(eltype, tp):
    res = ""
    res = res + CheckTuple(tp)
    if not attr.startswith(" "):
@@ -72,22 +72,23 @@ def TableCell(tp, cs=0):
    if cs!=0:
       attr = " colspan = %s" % cs
  
-   return TableElement("td", attr, tp)
+   return TableElement("td", tp)
 
 def TableRow(tp=""):
-   return TableElement("tr", "", tp)
+   return TableElement("tr", tp)
 
 def TableLine(tp=""):
    return TableRow(tp)
 
 def TableHead(tp=""):
-   return TableElement("th", "", tp)
+   return TableElement("th", tp)
 
-def Table(attr = "", *tp):
+def Table(*tp):
    #attr = " width=100% cellspacing=1"
-   attr.lower()
-   if attr.find("cellspacing")==-1:
-       attr = attr + " cellspacing=1"
+   
+   #attr.lower()
+   #if attr.find("cellspacing")==-1:
+   #    attr = attr + " cellspacing=1"
    
    #if border:
    #   attr = attr + " border=%s" % border
@@ -97,7 +98,7 @@ def Table(attr = "", *tp):
    #for param in tp
    #   if isinstance(param, dict):   
 
-   return TableElement("table", attr, tp)
+   return TableElement("table", tp)
 
 def TD(*tp):
    #return TableCell(tp, cs)
