@@ -97,7 +97,8 @@ def TableLine(*tp):
    return TableElement("tr", tp)
 
 def TableHead(*tp):
-   return TableElement("th", tp)
+   res = tuple(map(TH,tp)) + ("",)
+   return TableElement("tr", res)
 
 def Table(*tp):
    return TableElement("table", tp)
@@ -144,7 +145,6 @@ def TupleToString(tp):
 
 def Form(name, *tp):
    ttp = TupleToString(tp)
-   #print ttp
    res = "<form name=%s method=post%s>\n %s </form>" % (name,ttp[1],ttp[0])
    return res
 
@@ -156,10 +156,24 @@ def Html(name, *tp):
    return res
 
 if __name__ == "__main__":
-   print(Html("MyHtml module test",Form("myhtml.py", Header("My Html"),Label("Students assessment:"), 
-      Table(TR(TH("N"),TH("Name"),TH("Surname"),TH("Mark"),""),
-            TR(TD("1."),TD("John"),TD("Doe"),TH(Input("tst1")),""),
-            TR(TD("2."),TD("Michael"),TD("Cooperman","cs=2"),""),
-            TR(TD("3."),TD("Mark"),TD("Lieberman"),TH(Input("tst3")),""),
-            TR(TD("4."),TD("Alex"),TD("Miller"),TH(Input("tst4")),""),
-      "cs=1 br=1"),HyperLink("google.com"),"")))
+  print(Html("MyHtml module test",
+    Form("myhtml.py", 
+    Header("My Html"),
+    Label("Students assessment:"), 
+    Table(TableHead("N","Name","Surname","Mark"), #TR(TH("N"),TH("Name"),TH("Surname"),TH("Mark"),""),
+      TR(TD("1."), TD("John"),    TD("Doe"),       TD(Input("tst1")),""),
+      TR(TD("2."), TD("Michael"), TD("Cooperman",  "cs=2"),""),
+      TR(TD("3."), TD("Mark"),    TD("Lieberman"), TD(Input("tst3")),""),
+      TR(TD("4."), TD("Alex"),    TD("Miller"),    TD(Input("tst4")),""),
+    {"cs":1,"br":1} #"cs=1 br=1"
+    ), 
+    HyperLink("google.com"),
+    NL(),
+    NL(),
+    CheckBox("manual", True),
+    NL(),
+    TextBox("test","111"),
+    BR(),
+    SubmitButton("save"),
+    CancelButton("cancel"),
+    "")))

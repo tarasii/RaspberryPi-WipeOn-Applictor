@@ -3,22 +3,25 @@
 from myhtml import *
 
 print Html("test",
-   Form("zzz.html",CheckBox("manual", True),
+   Form("zzz.html",
+        Header("zzzz"),
+        Paragraph("asd asdf wer qwer qwerty"), 
+        Table(TableHead("N","Name","Surname","Mark"), #TR(TH("N"),TH("Name"),TH("Surname"),TH("Mark"),""),
+          TR(TD("1."), TD("John"),    TD("Doe"),       TD(Input("tst1")),""),
+          TR(TD("2."), TD("Michael"), TD("Cooperman",  "cs=2"),""),
+          TR(TD("3."), TD("Mark"),    TD("Lieberman"), TD(Input("tst3")),""),
+          TR(TD("4."), TD("Alex"),    TD("Miller"),    TD(Input("tst4")),""),
+          {"cs":1,"br":1} #"cs=1 br=1"
+          ),
+        HyperLink("google.com"),
+        NL(),
+        NL(),
+        CheckBox("manual", True),
         NL(),
         TextBox("test","111"),
-        NL(),
+        BR(),
         SubmitButton("save"),
         CancelButton("cancel"),
-        NL(),
-        HyperLink("google.com"),
-        BR(),
-        Table(
-           TR(TH("1"),TH("2"),TH("3"),""),
-            TR(TD("4","cs=2"),TD("5"),TD("6"),""),
-            TR(TD("7"),TD("8"),TD("9"),""),{"br":1,"cs":0,"wd":400}
-           ),
-        BR(),
-        Header("zzzz"),
-        Paragraph("asd asdf wer qwer qwerty"), ""
+        ""
        )
    )
