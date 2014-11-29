@@ -65,10 +65,6 @@ def BR():
 def TableElement(eltype, tp):
    res = ""
    attr = ""
-
-   #print tp
-   #print eltype
-   #return ""
    ttp = TupleToString(tp)
    res = ttp[0]
    attr = ttp[1]
@@ -87,14 +83,15 @@ def TableElement(eltype, tp):
    patern = "<%s%s>%s</%s>\n"
    return patern % (eltype, attr, res, eltype)
 
-def TableCell(tp, cs=0):
+def TableCell(*tp):
    return TableElement("td", tp)
 
 def TableRow(*tp):
    return TableElement("tr", tp)
 
 def TableLine(*tp):
-   return TableElement("tr", tp)
+   res = tuple(map(TD,tp)) + ("",)
+   return TableElement("tr", res)
 
 def TableHead(*tp):
    res = tuple(map(TH,tp)) + ("",)
@@ -155,16 +152,17 @@ def Html(name, *tp):
    res = res + "<title>%s</title>\n<body>\n%s\n</body>\n</html>" % (name,ttp[0])
    return res
 
+#example
 if __name__ == "__main__":
   print(Html("MyHtml module test",
     Form("myhtml.py", 
     Header("My Html"),
     Label("Students assessment:"), 
-    Table(TableHead("N","Name","Surname","Mark"), #TR(TH("N"),TH("Name"),TH("Surname"),TH("Mark"),""),
-      TR(TD("1."), TD("John"),    TD("Doe"),       TD(Input("tst1")),""),
+    Table(TableHead("N","Name","Surname",  "Mark"),        #TR(TH("N"),  TH("Name"),    TH("Surname"),   TH("Mark"),""),
+      TableLine("1.", "John", "Doe",       Input("tst1")), #TR(TD("1."), TD("John"),    TD("Doe"),       TD(Input("tst1")),""),
       TR(TD("2."), TD("Michael"), TD("Cooperman",  "cs=2"),""),
-      TR(TD("3."), TD("Mark"),    TD("Lieberman"), TD(Input("tst3")),""),
-      TR(TD("4."), TD("Alex"),    TD("Miller"),    TD(Input("tst4")),""),
+      TableLine("3.", "Mark", "Lieberman", Input("tst3")), #TR(TD("3."), TD("Mark"),    TD("Lieberman"), TD(Input("tst3")),""),
+      TableLine("4.", "Alex", "Miller",    Input("tst4")), #TR(TD("4."), TD("Alex"),    TD("Miller"),    TD(Input("tst4")),""),
     {"cs":1,"br":1} #"cs=1 br=1"
     ), 
     HyperLink("google.com"),
