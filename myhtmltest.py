@@ -2,10 +2,10 @@
 #
 from myhtml import *
 
-print Html("test",
-   Form("zzz.html",
-        Header("zzzz"),
-        Paragraph("asd asdf wer qwer qwerty"), 
+print Html("My html test",
+   Form("Myhtmltest.py",
+        Header("My html test"),
+        Paragraph("Hello world!"), 
         Table(TableHead("N","Name","Surname","Mark"), #TR(TH("N"),TH("Name"),TH("Surname"),TH("Mark"),""),
           TR(TD("1."), TD("John"),    TD("Doe"),       TD(Input("tst1")),""),
           TR(TD("2."), TD("Michael"), TD("Cooperman",  "cs=2"),""),
